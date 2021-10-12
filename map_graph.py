@@ -143,11 +143,6 @@ def Rent_Price_Limiter( n_clicks, Price_MIN_Sell, Price_MAX_Sell, m2_MIN_Sell, m
     my_world = world_new()
     
     #Price
-    # print(lok_sell)
-    # for row in range(len(lok_sell.index)):
-
-    # lok_sell_limit = lok_sell[(lok_sell['price'] >= Price_MIN_Sell) & (lok_sell['price'] <= Price_MAX_Sell)]
-    # lok_sell_limit = lok_sell[(Price_MIN_Sell <= lok_sell['price'] <= Price_MAX_Sell)]
     lok_sell_limit = lok_sell[lok_sell["price"].between(Price_MIN_Sell, Price_MAX_Sell, inclusive=True)]
     lok_sell_limit = lok_sell_limit.reset_index(drop=True)
     # print(lok_sell_limit)
@@ -230,4 +225,4 @@ def give_full_m2_rent(n_clicks_m2_rent):
     return min_value_rent_m2, max_value_rent_m2
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0')
+    app.run_server(host='0.0.0.0', port=8050)

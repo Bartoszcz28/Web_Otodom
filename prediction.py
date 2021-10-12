@@ -79,4 +79,4 @@ def get_prediction(m2, deposit, number_of_floors, room_number, floor, n_clicks):
     return (round(p_rent_price, 2),)
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0')
+    app.run_server(host='0.0.0.0', port=8051)
