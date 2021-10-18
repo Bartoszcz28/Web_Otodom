@@ -29,6 +29,11 @@ conn = None
 
 lok_sell = dat_sell[["latitude","longitude","price","m2"]]
 lok_rent = dat_rent[["latitude","longitude","rent_price","m2"]]
+# lok_sell = lok_sell.sample(n=200)
+# lok_rent = lok_rent.sample(n=200)
+# lok_sell = lok_sell.reset_index(drop=True)
+# lok_rent = lok_rent.reset_index(drop=True)
+
 
 a = 0
 for index, row in lok_sell.iterrows():
@@ -46,15 +51,14 @@ for index, row in lok_rent.iterrows():
         b += 1
 print("Drop rows where Nan from table rent: ", b)
 
+lok_sell = lok_sell.sample(n=200)
+lok_rent = lok_rent.sample(n=200)
+
 lok_sell = lok_sell.reset_index(drop=True)
 lok_rent = lok_rent.reset_index(drop=True)
 
 max_value_sell_price = lok_sell["price"].max()
 min_value_sell_price = lok_sell["price"].min()
-
-print(max_value_sell_price)
-print(min_value_sell_price)
-
 
 max_value_sell_m2 = lok_sell["m2"].max()
 min_value_sell_m2 = lok_sell["m2"].min()
