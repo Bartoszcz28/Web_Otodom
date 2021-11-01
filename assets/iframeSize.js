@@ -1,7 +1,3 @@
-window.addEventListener('message', event => {
-  if (event.origin.startsWith('https://bczarnecki.com')) { 
-      return document.body.scrollHeight;
-  } else {
-      return; 
-  } 
-}); 
+window.addEventListener('load', () => {
+  parent.postMessage({ id: location.port, height: document.body.scrollHeight }, "https://bczarnecki.com")
+});
