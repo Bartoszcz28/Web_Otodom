@@ -1,3 +1,4 @@
-window.addEventListener('load', () => {
-  parent.postMessage({ id: location.port, height: document.body.scrollHeight }, "https://bczarnecki.com")
-});
+const resizeObserver = new ResizeObserver(entries => 
+  parent.postMessage({ id: location.port, height: entries[0].target.clientHeight }, "https://bczarnecki.com")
+)
+resizeObserver.observe(document.body)
