@@ -17,6 +17,7 @@ import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 import plotly.express as px
 import dash_bootstrap_components as dbc
+from waitress import serve
 
 psql = psycopg2.connect(host='192.168.10.163', port='5432', database='Otodom', user='barto', password='biznes')
 
@@ -229,4 +230,5 @@ def give_full_m2_rent(n_clicks_m2_rent):
     return min_value_rent_m2, max_value_rent_m2
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', port=8050)
+    # app.run_server(host='0.0.0.0', port=8050)
+    serve(app.server, host='0.0.0.0', port=8050) # PRODUCTION

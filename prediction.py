@@ -7,6 +7,7 @@ import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 import plotly.express as px
 import dash_bootstrap_components as dbc
+from waitress import serve
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.LITERA],)
 
@@ -79,4 +80,5 @@ def get_prediction(m2, deposit, number_of_floors, room_number, floor, n_clicks):
     return (round(p_rent_price, 2),)
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', port=8051)
+    # app.run_server(host='0.0.0.0', port=8051)
+    serve(app.server, host='0.0.0.0', port=8051) # PRODUCTION
